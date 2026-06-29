@@ -14,6 +14,7 @@ import {
   Users2
 } from "lucide-react";
 import PageHero from "./PageHero.tsx";
+import ScrollReveal, { StaggerItem } from "./ScrollReveal.tsx";
 
 // High-quality caring interaction images representing warm companionship
 import bakingImg from "../assets/images/baking_together_new_1782404223721.jpg";
@@ -77,7 +78,7 @@ export default function About({ onNavigate }: AboutProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left side: Wording emphasizing kindness, dignity and humanity */}
-            <div className="lg:col-span-6 space-y-6">
+            <ScrollReveal variant="fade-right" className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-800 px-3.5 py-1 rounded-full border border-emerald-100">
                 <Heart className="w-3.5 h-3.5 text-care-green animate-pulse" />
                 <span className="text-[10px] font-bold uppercase tracking-widest font-mono">
@@ -107,10 +108,10 @@ export default function About({ onNavigate }: AboutProps) {
                   <span className="text-[11px] text-slate-500 leading-normal block">Connecting families, residents, and caregivers with transparent, loving loops.</span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right side: High-quality imagery collage representing human companionship */}
-            <div className="lg:col-span-6 relative">
+            <ScrollReveal variant="fade-left" className="lg:col-span-6 relative">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-emerald-400/10 rounded-full blur-3xl -z-10" />
               
               <div className="grid grid-cols-2 gap-4">
@@ -183,70 +184,74 @@ export default function About({ onNavigate }: AboutProps) {
                 </div>
               </div>
 
-            </div>
+            </ScrollReveal>
           </div>
 
           {/* Section 2: Person-Centred Vision and Mission Statements */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch animate-fadeIn">
+          <ScrollReveal variant="stagger-container" threshold={0.05} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             
             {/* Vision/Mission statement 1 */}
-            <div className="bg-[#f0f9ff]/70 rounded-3xl p-8 border border-sky-100 flex flex-col justify-between space-y-6 shadow-xs relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-sky-200/20 rounded-full blur-xl" />
-              
-              <div className="space-y-4">
-                <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-700 flex items-center justify-center">
-                  <Compass className="w-5 h-5 text-sky-600" />
+            <StaggerItem className="flex h-full flex-col">
+              <div className="bg-[#f0f9ff]/70 rounded-3xl p-8 border border-sky-100 flex flex-col justify-between h-full space-y-6 shadow-xs relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-sky-200/20 rounded-full blur-xl" />
+                
+                <div className="space-y-4">
+                  <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-700 flex items-center justify-center">
+                    <Compass className="w-5 h-5 text-sky-600" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-sky-900 font-sans">
+                    Our Warm Mission
+                  </h3>
+                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                    To provide a genuine home environment where people feel safe, valued and supported to live fulfilling lives, develop independence, build meaningful relationships and actively participate within their communities.
+                  </p>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-sky-900 font-sans">
-                  Our Warm Mission
-                </h3>
-                <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
-                  To provide a genuine home environment where people feel safe, valued and supported to live fulfilling lives, develop independence, build meaningful relationships and actively participate within their communities.
-                </p>
+                <div className="pt-2 border-t border-sky-100/50 flex justify-between items-center">
+                  <span className="text-[10px] font-bold text-sky-850 uppercase tracking-widest font-mono">
+                    Helping People Lead Meaningful Lives
+                  </span>
+                  <span className="text-xs text-sky-500 font-extrabold">★</span>
+                </div>
               </div>
-              <div className="pt-2 border-t border-sky-100/50 flex justify-between items-center">
-                <span className="text-[10px] font-bold text-sky-850 uppercase tracking-widest font-mono">
-                  Helping People Lead Meaningful Lives
-                </span>
-                <span className="text-xs text-sky-500 font-extrabold">★</span>
-              </div>
-            </div>
+            </StaggerItem>
 
             {/* Mission statement 2 */}
-            <div className="bg-[#f2fdf5]/80 rounded-3xl p-8 border border-emerald-100 flex flex-col justify-between space-y-6 shadow-xs relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-250/20 rounded-full blur-xl" />
-              
-              <div className="space-y-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-emerald-600 animate-pulse" />
+            <StaggerItem className="flex h-full flex-col">
+              <div className="bg-[#f2fdf5]/80 rounded-3xl p-8 border border-emerald-100 flex flex-col justify-between h-full space-y-6 shadow-xs relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-250/20 rounded-full blur-xl" />
+                
+                <div className="space-y-4">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center">
+                    <Heart className="w-5 h-5 text-emerald-600 animate-pulse" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-emerald-950 font-sans">
+                    Our Compassionate Mission
+                  </h3>
+                  <div className="space-y-3 text-slate-700 text-xs sm:text-sm leading-relaxed">
+                    <p>
+                      Pro Care Homes Ltd is committed to providing safe, high-quality, person-centred residential support for adults with Learning Disabilities, Autism Spectrum Conditions and associated Mental Health needs.
+                    </p>
+                    <p>
+                      Through the delivery of Positive Behaviour Support (PBS), Trauma-Informed Care (TIC) and Psychologically Informed Environment (PIE) approaches, we aim to create a genuine home environment where people are supported to develop independence, build meaningful relationships, participate actively within their communities and achieve positive outcomes throughout their lives.
+                    </p>
+                    <p>
+                      Our goal is to provide stable, long-term placements that promote wellbeing, choice, dignity, inclusion and personal growth.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-emerald-950 font-sans">
-                  Our Compassionate Mission
-                </h3>
-                <div className="space-y-3 text-slate-700 text-xs sm:text-sm leading-relaxed">
-                  <p>
-                    Pro Care Homes Ltd is committed to providing safe, high-quality, person-centred residential support for adults with Learning Disabilities, Autism Spectrum Conditions and associated Mental Health needs.
-                  </p>
-                  <p>
-                    Through the delivery of Positive Behaviour Support (PBS), Trauma-Informed Care (TIC) and Psychologically Informed Environment (PIE) approaches, we aim to create a genuine home environment where people are supported to develop independence, build meaningful relationships, participate actively within their communities and achieve positive outcomes throughout their lives.
-                  </p>
-                  <p>
-                    Our goal is to provide stable, long-term placements that promote wellbeing, choice, dignity, inclusion and personal growth.
-                  </p>
+                <div className="pt-2 border-t border-emerald-100/50 flex justify-between items-center">
+                  <span className="text-[10px] font-bold text-emerald-850 uppercase tracking-widest font-mono">
+                    Genuine Care & Positive Outcomes
+                  </span>
+                  <span className="text-xs text-emerald-500 font-extrabold">❤</span>
                 </div>
               </div>
-              <div className="pt-2 border-t border-emerald-100/50 flex justify-between items-center">
-                <span className="text-[10px] font-bold text-emerald-850 uppercase tracking-widest font-mono">
-                  Genuine Care & Positive Outcomes
-                </span>
-                <span className="text-xs text-emerald-500 font-extrabold">❤</span>
-              </div>
-            </div>
+            </StaggerItem>
 
-          </div>
+          </ScrollReveal>
 
           {/* Section 3: Care Philosophy highlight panel (Relationship-Based Care & Trust) */}
-          <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl border border-slate-800">
+          <ScrollReveal variant="zoom-in" threshold={0.1} className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl border border-slate-800">
             <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl" />
             <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-emerald-500/5 rounded-full blur-2xl" />
             
@@ -281,40 +286,35 @@ export default function About({ onNavigate }: AboutProps) {
                 </span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Section 4: Bento Grid Values (The Pillars of Our Compassionate Delivery) */}
           <div className="space-y-8">
-            <div className="text-center space-y-2 max-w-xl mx-auto">
+            <ScrollReveal variant="fade-up" className="text-center space-y-2 max-w-xl mx-auto">
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
                 Our Heartfelt Pillars of Kind, Loving and Personalised Support
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Everything we do is built upon a simple, heartfelt promise: to walk alongside your loved ones with patience, warm understanding, and absolute dignity. These values guide our daily care pathways, helping to bring safety, comfort, and real joy to every single home.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {values.map((v, index) => {
+            <ScrollReveal variant="stagger-container" threshold={0.05} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {values.map((v) => {
                 const Icon = v.icon;
                 return (
-                  <motion.div
-                    key={v.title}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05, duration: 0.5 }}
-                    className="bg-white hover:bg-slate-50 border hover:border-sky-100 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg shadow-xs hover:shadow-sky-100/30"
-                  >
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 border ${v.color}`}>
-                      <Icon className="w-5 h-5" />
+                  <StaggerItem key={v.title} scale={true} className="flex h-full flex-col">
+                    <div className="bg-white hover:bg-slate-50 border hover:border-sky-100 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg shadow-xs hover:shadow-sky-100/30 h-full w-full flex flex-col">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 border ${v.color}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-sm.5 font-bold text-slate-950 mb-2 font-sans">{v.title}</h4>
+                      <p className="text-slate-600 text-xs leading-relaxed flex-grow">{v.desc}</p>
                     </div>
-                    <h4 className="text-sm.5 font-bold text-slate-950 mb-2 font-sans">{v.title}</h4>
-                    <p className="text-slate-600 text-xs leading-relaxed">{v.desc}</p>
-                  </motion.div>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </ScrollReveal>
           </div>
 
         </div>

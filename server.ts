@@ -78,7 +78,7 @@ app.post("/api/assistant", async (req, res) => {
     // Add system instruction as part of initialization if using direct calls,
     // or add history. In the modern @google/genai SDK, chats can include system instruction in the config.
     const chat = ai.chats.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.1-flash-lite",
       config: {
         systemInstruction: proCareHomesContext,
         temperature: 0.7,

@@ -20,6 +20,7 @@ import Referrals from "./components/Referrals.tsx";
 import Policies from "./components/Policies.tsx";
 import warmCareInteraction from "./assets/images/warm_care_interaction_new_1782404279000.jpg";
 import HumanCare from "./components/HumanCare.tsx";
+import ScrollReveal, { StaggerItem } from "./components/ScrollReveal.tsx";
 
 import { 
   ShieldCheck, 
@@ -272,7 +273,7 @@ export default function App() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
               {/* Left Column: Commissioner Information Hub & Live Environments */}
-              <div className="lg:col-span-6 space-y-6">
+              <ScrollReveal variant="fade-right" className="lg:col-span-6 space-y-6">
                 <div className="inline-flex items-center space-x-2 bg-care-green/10 border border-care-green/20 px-3.5 py-1.5 rounded-full">
                   <ShieldCheck className="w-3.5 h-3.5 text-care-green" />
                   <span className="text-[10px] font-bold uppercase tracking-wider font-sans text-care-green">
@@ -385,10 +386,10 @@ export default function App() {
                     </div>
                   </div>
                 )}
-              </div>
+              </ScrollReveal>
               
               {/* Right Column: Warm, People-Focused Representative Imagery */}
-              <div className="lg:col-span-6 relative mt-6 lg:mt-0 flex justify-center">
+              <ScrollReveal variant="fade-left" className="lg:col-span-6 relative mt-6 lg:mt-0 flex justify-center">
                 <div className="relative w-full max-w-lg rounded-3xl overflow-hidden border border-slate-150 shadow-xl bg-white p-3 group">
                   <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden rounded-2xl border border-slate-50">
                     <img
@@ -417,7 +418,7 @@ export default function App() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
             </div>
           </div>
@@ -428,7 +429,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Section Header */}
-            <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
+            <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto space-y-4 mb-20">
               <span className="text-xs font-bold uppercase tracking-wider text-gov-blue font-sans block">
                 ORGANISATIONAL OVERVIEW
               </span>
@@ -439,49 +440,50 @@ export default function App() {
               <p className="text-text-secondary text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
                 We provide structured support pathways tailored to promote independence, positive risks, and personalised outcomes. Explore our core services below:
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Premium Bento Summaries Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ScrollReveal variant="stagger-container" threshold={0.05} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {dashboardCards.map((card) => {
                 const Icon = card.icon;
                 return (
-                  <div
-                    key={card.id}
-                    onClick={() => handleNavigate(card.id)}
-                    className="group bg-[#FCFDFE] hover:bg-white border hover:border-gov-blue/15 rounded-3xl p-6.5 transition-all duration-300 shadow-xs hover:shadow-xl hover:shadow-gov-blue/5 flex flex-col justify-between cursor-pointer transform hover:-translate-y-1 block"
-                  >
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <span className={`p-2.5 rounded-xl border ${card.accent}`}>
-                          <Icon className="w-5 h-5" />
-                        </span>
-                        <span className="text-[8px] uppercase tracking-widest font-bold bg-slate-100 text-slate-500 px-2.5 py-0.5 rounded font-sans">
-                          {card.badge}
+                  <StaggerItem key={card.id} scale={true} className="flex h-full">
+                    <div
+                      onClick={() => handleNavigate(card.id)}
+                      className="group w-full bg-[#FCFDFE] hover:bg-white border hover:border-gov-blue/15 rounded-3xl p-6.5 transition-all duration-300 shadow-xs hover:shadow-xl hover:shadow-gov-blue/5 flex flex-col justify-between cursor-pointer transform hover:-translate-y-1"
+                    >
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <span className={`p-2.5 rounded-xl border ${card.accent}`}>
+                            <Icon className="w-5 h-5" />
+                          </span>
+                          <span className="text-[8px] uppercase tracking-widest font-bold bg-slate-100 text-slate-500 px-2.5 py-0.5 rounded font-sans">
+                            {card.badge}
+                          </span>
+                        </div>
+                        <div className="space-y-1.5">
+                          <h3 className="font-extrabold text-xs sm:text-sm text-gov-blue group-hover:text-care-green transition-colors leading-tight">
+                            {card.title}
+                          </h3>
+                          <p className="text-[11.5px] text-text-secondary leading-relaxed">
+                            {card.desc}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="pt-6 flex justify-end">
+                        <span className="inline-flex items-center space-x-1 text-[11px] font-bold text-gov-blue group-hover:text-care-green hover:underline">
+                          <span>Access Volume</span>
+                          <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
-                      <div className="space-y-1.5">
-                        <h3 className="font-extrabold text-xs sm:text-sm text-gov-blue group-hover:text-care-green transition-colors leading-tight">
-                          {card.title}
-                        </h3>
-                        <p className="text-[11.5px] text-text-secondary leading-relaxed">
-                          {card.desc}
-                        </p>
-                      </div>
                     </div>
-                    <div className="pt-6 flex justify-end">
-                      <span className="inline-flex items-center space-x-1 text-[11px] font-bold text-gov-blue group-hover:text-care-green hover:underline">
-                        <span>Access Volume</span>
-                        <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
-                      </span>
-                    </div>
-                  </div>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </ScrollReveal>
 
             {/* Placement Stability Commitment Callout Card (Rewritten in Plain sectorspeak English) */}
-            <div className="mt-16 bg-gradient-to-br from-care-green to-gov-blue text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+            <ScrollReveal variant="zoom-in" threshold={0.1} className="mt-16 bg-gradient-to-br from-care-green to-gov-blue text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
               <div className="max-w-3xl space-y-4 relative z-10">
                 <span className="text-xs font-bold text-premium-gold uppercase tracking-widest font-sans">
@@ -502,7 +504,7 @@ export default function App() {
                   </button>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </section>
@@ -517,7 +519,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             {/* Section Header */}
-            <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto space-y-4 mb-16">
               <span className="text-xs font-bold uppercase tracking-wider text-care-green font-mono block">
                 COMPLIANCE & COMMISSIONER ASSURANCE
               </span>
@@ -528,117 +530,127 @@ export default function App() {
               <p className="text-text-secondary text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
                 Operating with absolute care quality integrity, strict statutory transparency, and constant multidisciplinary team supervision to satisfy critical standards of Care Quality Commission (CQC) lines of inquiry.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Main Commitment centerpiece panel */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12">
               
               {/* Centerpiece Panel (NHS/Governance Commitment Dashboard Card) */}
-              <div className="lg:col-span-5 bg-gradient-to-br from-gov-blue to-slate-950 text-white rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden shadow-xl border-l-4 border-premium-gold shadow-gov-blue/10">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-white/[0.04] rounded-full blur-3xl" />
-                
-                <div className="space-y-6 relative z-10">
-                  <div className="inline-flex items-center space-x-2 bg-white/10 px-3 py-1 rounded-lg">
-                    <Scale className="w-4 h-4 text-premium-gold" />
-                    <span className="text-[9.5px] font-bold uppercase tracking-widest font-mono text-premium-gold">
-                      Executive Board Standards
-                    </span>
-                  </div>
+              <ScrollReveal variant="fade-right" className="lg:col-span-5 flex flex-col">
+                <div className="bg-gradient-to-br from-gov-blue to-slate-950 text-white rounded-3xl p-8 flex flex-col justify-between h-full relative overflow-hidden shadow-xl border-l-4 border-premium-gold shadow-gov-blue/10">
+                  <div className="absolute top-0 right-0 w-80 h-80 bg-white/[0.04] rounded-full blur-3xl" />
                   
-                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
-                    Quality Assurance Architecture
-                  </h3>
-                  
-                  <p className="text-[11px] text-slate-300 leading-relaxed">
-                    Under the direct operational oversight of Salman Muhammad and Nominated Individual Boston Murray, PRO Care Homes complies with the Health and Social Care Act regulations. We practice proactive support oversight to maintain secure environments.
-                  </p>
+                  <div className="space-y-6 relative z-10">
+                    <div className="inline-flex items-center space-x-2 bg-white/10 px-3 py-1 rounded-lg">
+                      <Scale className="w-4 h-4 text-premium-gold" />
+                      <span className="text-[9.5px] font-bold uppercase tracking-widest font-mono text-premium-gold">
+                        Executive Board Standards
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+                      Quality Assurance Architecture
+                    </h3>
+                    
+                    <p className="text-[11px] text-slate-300 leading-relaxed">
+                      Under the direct operational oversight of Salman Muhammad and Nominated Individual Boston Murray, PRO Care Homes complies with the Health and Social Care Act regulations. We practice proactive support oversight to maintain secure environments.
+                    </p>
 
-                  <div className="space-y-3.5 border-t border-white/10 pt-6 text-[11px] text-slate-300">
-                    <div className="flex items-center space-x-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-care-green flex-shrink-0" />
-                      <span>Monthly independent Regulation 17 style internal audits</span>
+                    <div className="space-y-3.5 border-t border-white/10 pt-6 text-[11px] text-slate-300">
+                      <div className="flex items-center space-x-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-care-green flex-shrink-0" />
+                        <span>Monthly independent Regulation 17 style internal audits</span>
+                      </div>
+                      <div className="flex items-center space-x-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-care-green flex-shrink-0" />
+                        <span>Electronic medicine tracking ensuring robust administration safety</span>
+                      </div>
+                      <div className="flex items-center space-x-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-care-green flex-shrink-0" />
+                        <span>Trauma-informed post-incident debriefing frameworks</span>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-care-green flex-shrink-0" />
-                      <span>Electronic medicine tracking ensuring robust administration safety</span>
-                    </div>
-                    <div className="flex items-center space-x-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-care-green flex-shrink-0" />
-                      <span>Trauma-informed post-incident debriefing frameworks</span>
-                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-slate-400 relative z-10">
+                    <span>INTEGRATED CARE BOARD ALIGNED</span>
+                    <span>CQC REGULATION 17</span>
                   </div>
                 </div>
-
-                <div className="mt-8 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-slate-400 relative z-10">
-                  <span>INTEGRATED CARE BOARD ALIGNED</span>
-                  <span>CQC REGULATION 17</span>
-                </div>
-              </div>
+              </ScrollReveal>
 
               {/* Sub Governance Cards (Surrounding features) */}
-              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <ScrollReveal variant="stagger-container" threshold={0.05} className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 
                 {/* Governance Card 1: Safe & Structured */}
-                <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
-                  <div className="space-y-3">
-                    <div className="w-9 h-9 bg-sky-50 text-sky-700 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
-                      <Lock className="w-4.5 h-4.5" />
+                <StaggerItem scale={true} className="flex h-full flex-col">
+                  <div className="w-full h-full bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
+                    <div className="space-y-3">
+                      <div className="w-9 h-9 bg-sky-50 text-sky-700 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
+                        <Lock className="w-4.5 h-4.5" />
+                      </div>
+                      <h4 className="font-extrabold text-xs text-gov-blue">Safe & Structured Care</h4>
+                      <p className="text-[11px] text-text-secondary leading-relaxed">
+                        Rigorous pre-admission triggers matching and skin-integrity logging preventing institutional hazards.
+                      </p>
                     </div>
-                    <h4 className="font-extrabold text-xs text-gov-blue">Safe & Structured Care</h4>
-                    <p className="text-[11px] text-text-secondary leading-relaxed">
-                      Rigorous pre-admission triggers matching and skin-integrity logging preventing institutional hazards.
-                    </p>
+                    <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Safety Practice Protocol</span>
                   </div>
-                  <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Safety Practice Protocol</span>
-                </div>
+                </StaggerItem>
 
                 {/* Governance Card 2: Continuous Improvement */}
-                <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
-                  <div className="space-y-3">
-                    <div className="w-9 h-9 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
-                      <TrendingUp className="w-4.5 h-4.5" />
+                <StaggerItem scale={true} className="flex h-full flex-col">
+                  <div className="w-full h-full bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
+                    <div className="space-y-3">
+                      <div className="w-9 h-9 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
+                        <TrendingUp className="w-4.5 h-4.5" />
+                      </div>
+                      <h4 className="font-extrabold text-xs text-gov-blue">Continuous Improvement</h4>
+                      <p className="text-[11px] text-text-secondary leading-relaxed">
+                        Systemic audits identifying environmental stress trends to iterate low-arousal accommodations quickly.
+                      </p>
                     </div>
-                    <h4 className="font-extrabold text-xs text-gov-blue">Continuous Improvement</h4>
-                    <p className="text-[11px] text-text-secondary leading-relaxed">
-                      Systemic audits identifying environmental stress trends to iterate low-arousal accommodations quickly.
-                    </p>
+                    <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Nourish Analytics Logs</span>
                   </div>
-                  <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Nourish Analytics Logs</span>
-                </div>
+                </StaggerItem>
 
                 {/* Governance Card 3: CQC-Oriented Standards */}
-                <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
-                  <div className="space-y-3">
-                    <div className="w-9 h-9 bg-amber-50 text-amber-800 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
-                      <ClipboardCheck className="w-4.5 h-4.5" />
+                <StaggerItem scale={true} className="flex h-full flex-col">
+                  <div className="w-full h-full bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
+                    <div className="space-y-3">
+                      <div className="w-9 h-9 bg-amber-50 text-amber-800 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
+                        <ClipboardCheck className="w-4.5 h-4.5" />
+                      </div>
+                      <h4 className="font-extrabold text-xs text-gov-blue">CQC-Oriented Standards</h4>
+                      <p className="text-[11px] text-text-secondary leading-relaxed">
+                        Sustaining high competencies in Safe, Effective, Caring, Responsive, and Well-Led disciplines.
+                      </p>
                     </div>
-                    <h4 className="font-extrabold text-xs text-gov-blue">CQC-Oriented Standards</h4>
-                    <p className="text-[11px] text-text-secondary leading-relaxed">
-                      Sustaining high competencies in Safe, Effective, Caring, Responsive, and Well-Led disciplines.
-                    </p>
+                    <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Continuous Audit Readiness</span>
                   </div>
-                  <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Continuous Audit Readiness</span>
-                </div>
+                </StaggerItem>
 
                 {/* Governance Card 4: Safeguarding Priority */}
-                <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
-                  <div className="space-y-3">
-                    <div className="w-9 h-9 bg-rose-50 text-rose-700 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
-                      <ShieldAlert className="w-4.5 h-4.5" />
+                <StaggerItem scale={true} className="flex h-full flex-col">
+                  <div className="w-full h-full bg-slate-50 border border-slate-100 p-6 rounded-3xl flex flex-col justify-between group hover:bg-white hover:border-care-green/25 transition duration-200">
+                    <div className="space-y-3">
+                      <div className="w-9 h-9 bg-rose-50 text-rose-700 rounded-xl flex items-center justify-center group-hover:bg-care-green/10 group-hover:text-care-green transition">
+                        <ShieldAlert className="w-4.5 h-4.5" />
+                      </div>
+                      <h4 className="font-extrabold text-xs text-gov-blue">Safeguarding Commitment</h4>
+                      <p className="text-[11px] text-text-secondary leading-relaxed">
+                        Statutory whistleblowing immunities and speedy reporting to designated Local Authority Safeguarding Boards.
+                      </p>
                     </div>
-                    <h4 className="font-extrabold text-xs text-gov-blue">Safeguarding Commitment</h4>
-                    <p className="text-[11px] text-text-secondary leading-relaxed">
-                      Statutory whistleblowing immunities and speedy reporting to designated Local Authority Safeguarding Boards.
-                    </p>
+                    <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Zero-Tolerance Safeguards</span>
                   </div>
-                  <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 block pt-4">Zero-Tolerance Safeguards</span>
-                </div>
+                </StaggerItem>
 
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* Quick trust metrics row */}
-            <div className="border-t border-slate-100 pt-10 flex flex-wrap justify-around items-center gap-6 text-center">
+            <ScrollReveal variant="fade-up" delay={0.2} className="border-t border-slate-100 pt-10 flex flex-wrap justify-around items-center gap-6 text-center">
               <div>
                 <span className="text-xl sm:text-2xl font-black text-care-green block">98%</span>
                 <span className="text-[10px] uppercase tracking-wider font-sans text-slate-400 block font-bold">Placement Stability Index</span>
@@ -655,7 +667,7 @@ export default function App() {
                 <span className="text-xl sm:text-2xl font-black text-care-green block">32</span>
                 <span className="text-[10px] uppercase tracking-wider font-sans text-slate-400 block font-bold">Co-produced Goals Tracked</span>
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </section>
